@@ -1,4 +1,4 @@
-package com.naixue.group;
+package net.fibonacci.hadoop.mapreduce.flow.group.demo;
 
 import org.apache.hadoop.io.WritableComparable;
 

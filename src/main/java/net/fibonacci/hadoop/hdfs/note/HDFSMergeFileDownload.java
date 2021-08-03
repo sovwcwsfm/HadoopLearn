@@ -1,4 +1,4 @@
-package net.fibonacci.hadoop.hdfs;
+package net.fibonacci.hadoop.hdfs.note;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.hadoop.conf.Configuration;

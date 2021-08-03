@@ -1,4 +1,4 @@
-package net.fibonacci.hadoop.mapreduce.note.wordcount;
+package net.fibonacci.hadoop.mapreduce.note.combiner;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -33,12 +33,15 @@ public class JobMain {
                 // 设置读取文件的方式
         job.setInputFormatClass(TextInputFormat.class);
                 // 设置文件路径
-//        TextInputFormat.addInputPath(job, new Path("/Users/sovwcwsfm/MyDocument/BigData/Doc/NaiXue/data/wordCount.txt"));
-        TextInputFormat.addInputPath(job, new Path("hdfs://hadoop01:8020/wcinput/wordcount.txt"));
+        TextInputFormat.addInputPath(job, new Path("/Users/sovwcwsfm/MyDocument/BigData/Doc/NaiXue/data/wordCount.txt"));
+//        TextInputFormat.addInputPath(job, new Path("hdfs://hadoop01:8020/wcinput/wordcount.txt"));
             // 设置Map 及Map 的k v
         job.setMapperClass(WordMapper.class);
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(LongWritable.class);
+            // 设置Combiner
+        job.setCombinerClass(WordCombiner.class);
+
             // 设置Reduce 及Reduce 的k v
         job.setReducerClass(WordReduce.class);
         job.setOutputKeyClass(Text.class);
@@ -46,7 +49,8 @@ public class JobMain {
 
             // 设置输出路径 保存结果
         job.setOutputFormatClass(TextOutputFormat.class);
-        TextOutputFormat.setOutputPath(job, new Path("hdfs://hadoop01:8020/wcoutput2")); // 这里是一个文件夹
+        TextOutputFormat.setOutputPath(job, new Path("/Users/sovwcwsfm/MyDocument/BigData/Doc/NaiXue/data/combiner")); // 这里是一个文件夹
+//        TextOutputFormat.setOutputPath(job, new Path("hdfs://hadoop01:8020/wcoutput2")); // 这里是一个文件夹
 
 
         // 执行

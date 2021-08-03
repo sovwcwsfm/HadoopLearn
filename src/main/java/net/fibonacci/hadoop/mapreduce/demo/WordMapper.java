@@ -1,4 +1,4 @@
-package com.liao.mr;
+package net.fibonacci.hadoop.mapreduce.demo;
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;

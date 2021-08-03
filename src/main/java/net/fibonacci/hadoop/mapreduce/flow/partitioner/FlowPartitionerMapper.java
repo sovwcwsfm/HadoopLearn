@@ -1,4 +1,4 @@
-package net.fibonacci.hadoop.mapreduce.flow.sum;
+package net.fibonacci.hadoop.mapreduce.flow.partitioner;
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -14,7 +14,7 @@ import java.io.IOException;
  * 输出结果 流量
  *
  */
-public class FlowSumMapper extends Mapper<LongWritable, Text, Text, FlowBean> {
+public class FlowPartitionerMapper extends Mapper<LongWritable, Text, Text, FlowPartitionerBean> {
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
         // 分割数据
@@ -24,7 +24,7 @@ public class FlowSumMapper extends Mapper<LongWritable, Text, Text, FlowBean> {
         String mobile = contents[1];
 
         // 将流量信息存放到bean中
-        FlowBean flowBean = new FlowBean();
+        FlowPartitionerBean flowBean = new FlowPartitionerBean();
         flowBean.setUpFlow(Integer.parseInt(contents[6]));
         flowBean.setDownFlow(Integer.parseInt(contents[7]));
         flowBean.setUpCountFlow(Integer.parseInt(contents[8]));

@@ -1,4 +1,4 @@
-package com.liao.zk;
+package net.fibonacci.hadoop.zookeeper;
 
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.ZooDefs;
@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class ZooKeeperDemo {
     // 客户端去请求链接的时候的服务器链接地址信息
-    private static String connectString = "hadoop0:2181,hadoop1:2181,hadoop2:2181";
+    private static String connectString = "hadoop01:2181,hadoop02:2181,hadoop03:2181";
 
     // 客户端去请求链接的超时时长
     private static int sessionTimeout = 4000;

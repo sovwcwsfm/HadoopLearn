@@ -1,6 +1,7 @@
 package net.fibonacci.hadoop.mapreduce.note.sort;
 
 import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
@@ -13,7 +14,7 @@ import java.io.IOException;
  *
  * <KEYIN,VALUEIN,KEYOUT,VALUEOUT>
  */
-public class WordReduce extends Reducer<Text, LongWritable, Text, LongWritable> {
+public class SortReduce extends Reducer<MySortBean, NullWritable, MySortBean, NullWritable> {
 
     /**
      * 合并数据
@@ -24,15 +25,8 @@ public class WordReduce extends Reducer<Text, LongWritable, Text, LongWritable> 
      * @throws InterruptedException
      */
     @Override
-    protected void reduce(Text key, Iterable<LongWritable> values, Context context) throws IOException, InterruptedException {
-        // key 出现的次数
-        long keyCount = 0;
-        // 遍历当前key 下面的所有key 次数 然后统计求和
-        for (LongWritable count : values) {
-            keyCount += count.get();
-        }
-
-        // 输出
-        context.write(key, new LongWritable(keyCount));
+    protected void reduce(MySortBean key, Iterable<NullWritable> values, Context context) throws IOException, InterruptedException {
+        // 这里咋进来的 咋 输出
+        context.write(key, NullWritable.get());
     }
 }

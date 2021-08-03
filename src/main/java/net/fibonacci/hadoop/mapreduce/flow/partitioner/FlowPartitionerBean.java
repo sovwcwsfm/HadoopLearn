@@ -1,4 +1,4 @@
-package net.fibonacci.hadoop.mapreduce.flow.sum;
+package net.fibonacci.hadoop.mapreduce.flow.partitioner;
 
 import org.apache.hadoop.io.Writable;
 
@@ -11,7 +11,7 @@ import java.io.IOException;
  * @Date: 2021/1/1 20:54
  * @Description: 流量求和实体类
  */
-public class FlowBean implements Writable {
+public class FlowPartitionerBean implements Writable {
 
     private int upFlow;             // 上行数据包
     private int downFlow;           // 下行数据包
@@ -60,7 +60,7 @@ public class FlowBean implements Writable {
                 '}';
     }
 
-    public void doAdd(FlowBean data) {
+    public void doAdd(FlowPartitionerBean data) {
         this.upFlow += data.getUpFlow();
         this.downFlow += data.getDownFlow();
         this.upCountFlow += data.getUpCountFlow();

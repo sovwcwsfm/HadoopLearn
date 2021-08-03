@@ -1,6 +1,6 @@
-package net.fibonacci.flink.map;
+package net.fibonacci.flink.base.map;
 
-import net.fibonacci.flink.model.WordCountModel;
+import net.fibonacci.flink.base.model.WordCountModel;
 import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.util.Collector;
 

@@ -1,6 +1,7 @@
 package net.fibonacci.hadoop.mapreduce.note.sort;
 
 import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
@@ -21,9 +22,7 @@ import java.io.IOException;
  *     hadoop 自己创建了一些的数据类型来处理 高效序列化 为啥要序列化 本地存储网络传输都需要序列化
  *
  */
-public class WordMapper extends Mapper<LongWritable, Text, Text, LongWritable> {
-
-    private LongWritable one = new LongWritable(1);
+public class SortMapper extends Mapper<LongWritable, Text, MySortBean, NullWritable> {
 
     /**
      * 数据处理
@@ -37,11 +36,11 @@ public class WordMapper extends Mapper<LongWritable, Text, Text, LongWritable> {
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
         // 单词切分
         String[] worlds = value.toString().split(" ");
-
-        // 计数 生成 <hello 1> 的key value
-        for (String world : worlds) {
-            // 输出 写入到上下文中
-            context.write(new Text(world), one);
-        }
+        // 生成 MySortBean 的key
+//        MySortBean data = new MySortBean();
+//        data.setWord(worlds[0]);
+//        data.setCount(Integer.parseInt(worlds[1]));
+        // 输出 写入到上下文中  如果这么写但是 MySortBean 没有重载 MySortBean() 会有问题 应该是走了反射 反射创建不出对象了
+        context.write(new MySortBean(worlds[0], Integer.parseInt(worlds[1])), NullWritable.get());
     }
 }

@@ -10,9 +10,9 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 /**
  * @Auther: sovwcwsfm
  * @Date: 2021/7/19 20:01
- * @Description: wordCount flink版本
+ * @Description: wordCount flink通过socket读取数据版本
  */
-public class WordCountFlink {
+public class WordCountFlinkForSocket {
     public static void main(String[] args) throws Exception {
         // 1. 程序入口
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();

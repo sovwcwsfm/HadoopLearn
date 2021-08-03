@@ -1,4 +1,4 @@
-package net.fibonacci.hadoop.mapreduce.note.wordcount;
+package net.fibonacci.hadoop.mapreduce.note.combiner;
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;

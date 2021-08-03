@@ -1,4 +1,4 @@
-package com.naixue.group;
+package net.fibonacci.hadoop.mapreduce.flow.group.demo;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -24,7 +24,7 @@ public class JobMain {
         //二、配置Job信息
         //1、设置输入信息
         job.setInputFormatClass(TextInputFormat.class);
-        TextInputFormat.addInputPath(job,new Path("D://input/orders.txt"));
+        TextInputFormat.addInputPath(job,new Path("/Users/sovwcwsfm/MyDocument/BigData/Doc/NaiXue/data/orders.txt"));
 
         //2、设置mapper
         job.setMapperClass(OrderMapper.class);
@@ -40,14 +40,14 @@ public class JobMain {
 
         //7、设置Reducer
         job.setReducerClass(OrderReducer.class);
-        job.setOutputKeyClass(OrderBean.class);
+        job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(NullWritable.class);
 
         //job.setNumReduceTasks(3);
 
         //8、设置输出
         job.setOutputFormatClass(TextOutputFormat.class);
-        TextOutputFormat.setOutputPath(job,new Path("D://mygroup_out"));
+        TextOutputFormat.setOutputPath(job,new Path("/Users/sovwcwsfm/MyDocument/BigData/Doc/NaiXue/data/order"));
 
         //三、等待完成
         boolean b = job.waitForCompletion(true);

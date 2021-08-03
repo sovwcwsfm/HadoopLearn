@@ -12,9 +12,9 @@ import java.util.List;
 /**
  * @Auther: sovwcwsfm
  * @Date: 2021/7/19 20:01
- * @Description: wordCount flink版本
+ * @Description: wordCount flink读取集合版本
  */
-public class WordCountFlinkForLocal {
+public class WordCountFlinkForCollection {
     public static void main(String[] args) throws Exception {
         // 1. 程序入口
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
@@ -26,7 +26,7 @@ public class WordCountFlinkForLocal {
         input.add("helloWorld");
         input.add("helloWorld");
         input.add("flink");
-        // 2. 获取输入数据 这里通过Socket流来获取输入数据
+        // 2. 获取输入数据 这里通过当前集合来获取输入数据
         DataStreamSource<String> socketDataStream = env.fromCollection(input);
 
         // 3. 数据处理 切分数据获取单词-> 按单词分组 -> 数量+1

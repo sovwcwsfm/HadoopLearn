@@ -1,4 +1,4 @@
-package net.fibonacci.flink.model;
+package net.fibonacci.flink.base.model;
 
 /**
  * @Auther: sovwcwsfm

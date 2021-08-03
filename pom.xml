@@ -6,7 +6,12 @@
 
     <groupId>net.fibonacci</groupId>
     <artifactId>HadoopLearn</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>udf</module>
+        <module>flink</module>
+    </modules>
 
     <dependencies>
         <dependency>

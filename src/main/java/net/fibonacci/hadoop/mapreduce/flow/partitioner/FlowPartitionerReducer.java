@@ -1,4 +1,4 @@
-package net.fibonacci.hadoop.mapreduce.flow.sum;
+package net.fibonacci.hadoop.mapreduce.flow.partitioner;
 
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
@@ -12,12 +12,12 @@ import java.io.IOException;
  * 输入手机号 流量数据
  * 输出手机号 统计后的流量数据
  */
-public class FlowSumReducer extends Reducer<Text, FlowBean, Text, FlowBean> {
+public class FlowPartitionerReducer extends Reducer<Text, FlowPartitionerBean, Text, FlowPartitionerBean> {
     @Override
-    protected void reduce(Text key, Iterable<FlowBean> values, Context context) throws IOException, InterruptedException {
+    protected void reduce(Text key, Iterable<FlowPartitionerBean> values, Context context) throws IOException, InterruptedException {
         // 结果flowBean
-        FlowBean sumData = new FlowBean();
-        for (FlowBean data: values) {
+        FlowPartitionerBean sumData = new FlowPartitionerBean();
+        for (FlowPartitionerBean data: values) {
             // 累加 4个数据
             sumData.doAdd(data);
         }

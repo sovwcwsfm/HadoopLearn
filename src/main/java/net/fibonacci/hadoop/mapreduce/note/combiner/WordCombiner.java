@@ -12,8 +12,12 @@ import java.io.IOException;
  * @Description:
  *
  * <KEYIN,VALUEIN,KEYOUT,VALUEOUT>
+ *     KEYIN        map阶段 输出的key 数据类型
+ *     VALUEIN      map阶段 输出的value 数据类型
+ *     KEYOUT       局部合并 输出的key 数据类型
+ *     VALUEOUT     局部合并 输出的value 数据类型
  */
-public class WordReduce extends Reducer<Text, LongWritable, Text, LongWritable> {
+public class WordCombiner extends Reducer<Text, LongWritable, Text, LongWritable> {
 
     /**
      * 合并数据
