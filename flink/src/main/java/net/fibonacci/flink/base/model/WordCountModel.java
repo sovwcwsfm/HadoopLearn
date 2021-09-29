@@ -8,6 +8,7 @@ package net.fibonacci.flink.base.model;
 public class WordCountModel {
     private String word;
     private int count;
+    private long eventTime;
 
     public WordCountModel() {
     }
@@ -31,6 +32,14 @@ public class WordCountModel {
 
     public void setWord(String word) {
         this.word = word;
+    }
+
+    public long getEventTime() {
+        return eventTime;
+    }
+
+    public void setEventTime(long eventTime) {
+        this.eventTime = eventTime;
     }
 
     @Override

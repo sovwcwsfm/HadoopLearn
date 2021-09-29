@@ -1,4 +1,4 @@
-package net.fibonacci.flink.base.souce;
+package net.fibonacci.flink.window.souce;
 
 import org.apache.commons.lang.time.FastDateFormat;
 import org.apache.flink.streaming.api.functions.source.SourceFunction;
@@ -28,7 +28,6 @@ public class TestSource implements SourceFunction<String> {
         // 第 13 秒发送两个事件
         TimeUnit.SECONDS.sleep(13);
         ctx.collect("hadoop");
-        // 产生了一个事件，但是由于网络原因，事件没有发送
         ctx.collect("hadoop");
         // 第 16 秒发送一个事件
         TimeUnit.SECONDS.sleep(3);

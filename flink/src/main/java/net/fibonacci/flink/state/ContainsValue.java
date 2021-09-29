@@ -1,6 +1,6 @@
 package net.fibonacci.flink.state;
 
-import net.fibonacci.flink.state.map.SumWithReducingState;
+import net.fibonacci.flink.state.map.ContainsValueWithAggregatingState;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
@@ -8,9 +8,9 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 /**
  * @Auther: sovwcwsfm
  * @Date: 2021/8/3 16:35
- * @Description: 不用sum通过state来完成求和
+ * @Description: 合并数据
  */
-public class Sum {
+public class ContainsValue {
 
     public static void main(String[] args) throws Exception {
         // 程序应用入口
@@ -31,9 +31,9 @@ public class Sum {
 
         dataStreamSource
                 .keyBy(value -> value.f0)
-                .flatMap(new SumWithReducingState())
+                .flatMap(new ContainsValueWithAggregatingState())
                 .print();
 
-        executionEnvironment.execute("sumForState");
+        executionEnvironment.execute("containForState");
     }
 }

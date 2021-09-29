@@ -17,8 +17,14 @@ public class WordSplitTask implements FlatMapFunction<String, WordCountModel> {
 
         for (String word:
              fields) {
+            WordCountModel wordModel = new WordCountModel(word, 1);
+            if (word.contains(",")) {
+                String[] data = wordModel.getWord().split(",");
+                wordModel.setWord(data[0]);
+                wordModel.setEventTime(Long.parseLong(data[1]));
+            }
             // 输出到下游
-            out.collect(new WordCountModel(word, 1));
+            out.collect(wordModel);
         }
     }
 }

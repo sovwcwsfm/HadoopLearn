@@ -11,7 +11,7 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 /**
  * @Auther: sovwcwsfm
  * @Date: 2021/7/30 10:45
- * @Description:
+ * @Description: 同个key 每3次对值取平均输出
  */
 public class CountAverage {
     public static void main(String[] args) throws Exception {

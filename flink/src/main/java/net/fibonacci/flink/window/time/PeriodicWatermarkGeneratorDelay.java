@@ -10,7 +10,10 @@ import org.apache.flink.api.common.eventtime.WatermarkOutput;
  * @Date: 2021/8/19 17:30
  * @Description:
  */
-public class PeriodicWatermarkGenerator implements WatermarkGenerator<WordCountModel> {
+public class PeriodicWatermarkGeneratorDelay implements WatermarkGenerator<WordCountModel> {
+
+    private static final long DELAY = 5000; // 水位
+
     @Override
     public void onEvent(WordCountModel wordCountModel, long l, WatermarkOutput watermarkOutput) {
 
@@ -18,6 +21,6 @@ public class PeriodicWatermarkGenerator implements WatermarkGenerator<WordCountM
 
     @Override
     public void onPeriodicEmit(WatermarkOutput watermarkOutput) {
-        watermarkOutput.emitWatermark(new Watermark(System.currentTimeMillis()));
+        watermarkOutput.emitWatermark(new Watermark(System.currentTimeMillis() - DELAY));
     }
 }

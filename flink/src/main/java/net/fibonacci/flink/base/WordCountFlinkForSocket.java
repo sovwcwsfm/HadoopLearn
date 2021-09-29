@@ -3,6 +3,7 @@ package net.fibonacci.flink.base;
 import net.fibonacci.flink.base.map.WordSplitTask;
 import net.fibonacci.flink.base.model.WordCountModel;
 import org.apache.flink.api.java.utils.ParameterTool;
+import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
@@ -15,7 +16,8 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 public class WordCountFlinkForSocket {
     public static void main(String[] args) throws Exception {
         // 1. 程序入口
-        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironmentWithWebUI(new Configuration());   // 带WEB
+//        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         // 2. 获取输入数据 这里通过Socket流来获取输入数据
 //        DataStreamSource<String> socketDataStream = env.socketTextStream("", 111);
 
